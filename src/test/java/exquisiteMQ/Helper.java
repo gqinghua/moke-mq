@@ -13,8 +13,8 @@ public class Helper {
 
         final MetaClientConfig metaClientConfig = new MetaClientConfig();
         final ZkUtils.ZKConfig zkConfig = new ZkUtils.ZKConfig();
-        zkConfig.zkConnect = "127.0.0.1:2181";
-//        zkConfig.zkRoot = "/";
+        zkConfig.zkConnect = "123.57.128.134:2181";
+        zkConfig.zkRoot = "/";
         metaClientConfig.setZkConfig(zkConfig);
         return metaClientConfig;
 
