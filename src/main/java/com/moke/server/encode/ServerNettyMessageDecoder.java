@@ -26,6 +26,7 @@ public class ServerNettyMessageDecoder  extends ByteToMessageDecoder {
     }
 
 
+    @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf buffer, List<Object> out) throws Exception {
         // 可读长度必须大于基本长度
         if (buffer.readableBytes() >= MessageContant.shortMessageLength) {

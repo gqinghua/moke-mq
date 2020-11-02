@@ -25,6 +25,7 @@ public class ServerNettyMessageEncoder extends MessageToByteEncoder<Response> {
 
     private static final byte[] LENGTH_PLACHOLDER = new byte[4];
 
+    @Override
     protected void encode(ChannelHandlerContext ctx, Response msg, ByteBuf out) throws Exception {
 
         if (msg == null || msg.getHeader() == null) {

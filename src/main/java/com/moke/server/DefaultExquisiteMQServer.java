@@ -21,7 +21,7 @@ import java.util.Objects;
 import java.util.Properties;
 
 /**
- * 默认的ExquisiteMQ服务器
+ *
  *
  * @author jianglinzou
  * @date 2019/3/14 下午2:41
@@ -39,6 +39,7 @@ public class DefaultExquisiteMQServer implements ExquisiteMQServer {
 
     private MetaZookeeper metaZookeeper;
 
+    @Override
     public void start() throws Exception {
         logger.info("start to start ExquisiteMQServer");
         init();
