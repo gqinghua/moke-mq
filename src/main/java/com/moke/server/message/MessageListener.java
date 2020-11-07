@@ -2,6 +2,7 @@ package com.moke.server.message;
 
 
 import com.moke.broker.ClientChannelInfo;
+import com.moke.model.MokeRequest;
 import io.netty.channel.Channel;
 
 /**
@@ -38,7 +39,7 @@ public abstract class MessageListener {
      *
      * @param request
      */
-    void onRequest(StormRequest request) {
+    void onRequest(MokeRequest request) {
 
     }
 
