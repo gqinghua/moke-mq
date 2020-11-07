@@ -1,10 +1,6 @@
-package com.moke.server;
+package com.moke.server.message;
 
-import broker.netty.broker.ClientChannelInfo;
-import broker.netty.model.StormRequest;
-import broker.netty.model.SubscriptRequestinfo;
-import broker.netty.smq.ConsumeResult;
-import broker.netty.smq.Message;
+
 import io.netty.channel.Channel;
 
 /**
