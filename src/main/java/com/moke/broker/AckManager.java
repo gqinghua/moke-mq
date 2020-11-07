@@ -1,6 +1,7 @@
 package com.moke.broker;
 
-import broker.netty.smq.SendResult;
+
+import com.moke.client.producer.SendResult;
 import io.netty.channel.Channel;
 
 import java.util.List;
