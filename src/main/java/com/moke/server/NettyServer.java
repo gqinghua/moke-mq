@@ -1,6 +1,8 @@
 package com.moke.server;
 
 import com.moke.commons.utils.codec.SerializerFactory;
+import com.moke.model.MokeRequest;
+import com.moke.model.MokeResponse;
 import com.moke.server.encode.ServerNettyMessageDecoder;
 import com.moke.server.encode.ServerNettyMessageEncoder;
 import io.netty.bootstrap.ServerBootstrap;
@@ -25,6 +27,7 @@ import java.util.Objects;
 public class NettyServer implements  BrokerServer{
 
     private EventLoopGroup bossGroup;
+    private ServerBootstrap bootstrap;
     private EventLoopGroup workerGroup;
 
     public static Logger logger = LoggerFactory.getLogger(NettyServer.class);
@@ -50,8 +53,8 @@ public class NettyServer implements  BrokerServer{
 
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
-                            socketChannel.pipeline().addLast(new RpcEncoder(StormResponse.class));
-                            socketChannel.pipeline().addLast(new RpcDecoder(StormRequest.class));
+                            socketChannel.pipeline().addLast(new RpcEncoder(MokeResponse.class));
+                            socketChannel.pipeline().addLast(new RpcDecoder(MokeRequest.class));
                             socketChannel.pipeline().addLast(handler);
                         }
                     }).option(ChannelOption.SO_KEEPALIVE,true);
@@ -67,15 +70,15 @@ public class NettyServer implements  BrokerServer{
         workerGroup = new NioEventLoopGroup();
         try {
             // 服务器辅助启动类配置
-            ServerBootstrap b = new ServerBootstrap();
-            b.group(bossGroup, workerGroup)
+
+            bootstrap.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .handler(new LoggingHandler(LogLevel.INFO))
                     .childHandler(new ChildChannelHandler())//
                     .option(ChannelOption.SO_BACKLOG, 1024) // 设置tcp缓冲区 // (5)
                     .childOption(ChannelOption.SO_KEEPALIVE, true); // (6)
             // 绑定端口 同步等待绑定成功
-            ChannelFuture f = b.bind(port).sync(); // (7)
+            ChannelFuture f = bootstrap.bind(port).sync(); // (7)
             // 等到服务端监听端口关闭
             f.channel().closeFuture().sync();
         } finally {
@@ -111,7 +114,7 @@ public class NettyServer implements  BrokerServer{
         }
     }
 
-    public static void main(String[] args) throws Exception {
-        new NettyServer().bind(9999);
-    }
+//    public static void main(String[] args) throws Exception {
+//        new NettyServer().bind(9999);
+//    }
 }
