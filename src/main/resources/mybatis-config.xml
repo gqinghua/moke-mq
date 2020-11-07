@@ -34,7 +34,7 @@
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
 
                 <property name="url"
-                          value="jdbc:mysql://localhost:3306/order?useUnicode=true&amp;characterEncoding=UTF-8"/>
+                          value="jdbc:mysql://localhost:3306/order?seUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"/>
 
                 <property name="username" value="root"/>
 

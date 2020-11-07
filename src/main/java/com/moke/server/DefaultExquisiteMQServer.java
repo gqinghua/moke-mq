@@ -29,7 +29,7 @@ import java.util.Properties;
 public class DefaultExquisiteMQServer implements ExquisiteMQServer {
     public static Logger logger = LoggerFactory.getLogger(DefaultExquisiteMQServer.class);
 
-    DefaultNettyServer defaultNettyServer = new DefaultNettyServer();
+    NettyServer defaultNettyServer = new NettyServer();
 
     private ZkUtils.ZKConfig zkConfig;
 

@@ -58,7 +58,7 @@ public class MetaZookeeper {
         this.zkClient = zkClient;
         this.metaRoot = this.normalize(root);
         this.consumersPath = this.metaRoot + "/consumers";
-        this.brokerIdsPath = this.metaRoot + "/brokers/ids";
+        this.brokerIdsPath = this.metaRoot + "/brokers/topics-sub";
         this.brokerTopicsPath = this.metaRoot + "/brokers/topics";
         this.brokerTopicsPubPath = this.metaRoot + "/brokers/topics-pub";
         this.brokerTopicsSubPath = this.metaRoot + "/brokers/topics-sub";

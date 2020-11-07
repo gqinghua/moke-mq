@@ -22,14 +22,14 @@ import java.util.Objects;
  * @author jianglinzou
  * @date 2019/3/11 下午4:10
  */
-public class DefaultNettyServer {
+public class NettyServer {
 
     private EventLoopGroup bossGroup;
     private EventLoopGroup workerGroup;
 
-    public static Logger logger = LoggerFactory.getLogger(DefaultNettyServer.class);
+    public static Logger logger = LoggerFactory.getLogger(NettyServer.class);
 
-    public DefaultNettyServer() {
+    public NettyServer() {
     }
 
     public void bind(int port) throws Exception {
@@ -83,6 +83,6 @@ public class DefaultNettyServer {
     }
 
     public static void main(String[] args) throws Exception {
-        new DefaultNettyServer().bind(9999);
+        new NettyServer().bind(9999);
     }
 }

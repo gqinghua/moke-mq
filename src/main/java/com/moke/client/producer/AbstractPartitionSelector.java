@@ -14,7 +14,9 @@ import java.util.List;
 public abstract class AbstractPartitionSelector implements PartitionSelector {
 
 
+    @Override
     public Partition getPartition(String topic, List<Partition> partitions, Message message) throws SimpleMQClientException {
+
         if (partitions == null) {
             throw new SimpleMQClientException("There is no aviable partition for topic " + topic
                     + ",maybe you don't publish it at first?");

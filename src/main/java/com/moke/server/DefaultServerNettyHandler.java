@@ -26,11 +26,12 @@ import static com.moke.commons.utils.network.MessageTypeContant.GET_MESSAGE;
  */
 public class DefaultServerNettyHandler extends ChannelHandlerAdapter {
 
-    public static Logger logger = LoggerFactory.getLogger(DefaultNettyServer.class);
+    public static Logger logger = LoggerFactory.getLogger(NettyServer.class);
     // 用于获取客户端发送的信息
 
     StoreMessage storeMessage = new JDBCStoreMessage();
 
+    @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg)
             throws Exception {
         // 用于获取客户端发来的数据信息
