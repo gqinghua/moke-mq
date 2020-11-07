@@ -1,6 +1,12 @@
 package com.moke.server;
 
 
+import com.moke.broker.ClientChannelInfo;
+import com.moke.broker.ConsumerManager;
+import com.moke.broker.SendHelper;
+import com.moke.commons.Message;
+import com.moke.model.*;
+import com.moke.server.message.ConsumeResult;
 import com.moke.server.message.MessageListener;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -41,10 +47,10 @@ public class BrokerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
        // System.out.println("received request");
-        StormRequest request = (StormRequest)msg;
+        MokeRequest request = (MokeRequest)msg;
 
         //构建响应消息,不论是消费者还是生产者,发给的broker的消息都是用StormRequest包装,回应的消息都是用StormResponse响应.
-        StormResponse response = new StormResponse();
+        MokeResponse response = new MokeResponse();
         response.setRequestId(request.getRequestId());
         response.setFromtype(RequestResponseFromType.Broker);
       //  System.out.println("request.getRequestType():"+request.getRequestType());
