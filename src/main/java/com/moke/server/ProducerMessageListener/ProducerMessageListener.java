@@ -1,29 +1,29 @@
 package com.moke.server.ProducerMessageListener;
 
 
-
-
-
 import com.moke.broker.*;
+import com.moke.file.LogTask;
 import com.moke.model.SendTask;
 import com.moke.server.SendResult.SendResult;
 import com.moke.server.SendResult.SendStatus;
 import com.moke.server.message.Message;
 import com.moke.server.message.MessageListener;
+import com.moke.tool.FlushTool;
+import com.moke.tool.MemoryTool;
+import com.moke.tool.Tool;
 import io.netty.channel.Channel;
 
-import javax.tools.Tool;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 /**
- * Created by yang on 16-11-24.
+ * //broker收到producer的消息的时候的监听类
  */
-//broker收到producer的消息的时候的监听类
+
 public class ProducerMessageListener extends MessageListener {
     @Override
-    void onProducerMessageReceived(Message msg, String requestId, Channel channel) {
+   public void onProducerMessageReceived(Message msg, String requestId, Channel channel) {
         //把一个请求对应的requestId对应的channel放入队列.
         AckManager.pushRequest(requestId,channel);
         boolean isError = false;
@@ -73,10 +73,11 @@ public class ProducerMessageListener extends MessageListener {
             SendTask task = new SendTask();
             task.setGroupId(consumerGroupInfo.getGroupId());
             task.setTopic(topic);
+//            task.setMessage(msg);
             task.setMessage(msg);
-
             taskList.add(task);
             LogTask log = new LogTask(task,0);
+//            byte[] data = Tool.serialize(log);
             byte[] data = Tool.serialize(log);
             logList.add(data);
         }

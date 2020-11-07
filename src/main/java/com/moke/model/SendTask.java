@@ -2,7 +2,9 @@ package com.moke.model;
 
 
 
-import com.moke.commons.Message;
+
+
+import com.moke.server.message.Message;
 
 import java.io.Serializable;
 
@@ -40,41 +42,47 @@ public class SendTask implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if(this == obj)
+        if(this == obj) {
             return true;
-        if(obj == null)
+        }
+        if(obj == null) {
             return false;
-        if(getClass() != obj.getClass())
+        }
+        if(getClass() != obj.getClass()) {
             return false;
+        }
         SendTask other= (SendTask)obj;
         if(groupId == null){
-            if(other.getGroupId() != null)
+            if(other.getGroupId() != null) {
                 return false;
+            }
         }else {
-            if(other.getGroupId() == null)
+            if(other.getGroupId() == null) {
                 return false;
-            else if(!groupId.equals(other.getGroupId()))
+            } else if(!groupId.equals(other.getGroupId())) {
                 return false;
+            }
         }
         if(topic == null){
-            if(other.getTopic() != null)
+            if(other.getTopic() != null) {
                 return false;
+            }
         }else {
-            if(other.getTopic() == null)
+            if(other.getTopic() == null) {
                 return false;
-            else if (!topic.equals(other.getTopic()))
+            } else if (!topic.equals(other.getTopic())) {
                 return false;
+            }
         }
         if(message == null){
-            if(other.getMessage() != null)
-                return false;
+            return other.getMessage() == null;
         }else{
-            if(other.getMessage() == null)
+            if(other.getMessage() == null) {
                 return false;
-            else if(message.equals(other.getMessage()))
-                return false;
+            } else {
+                return !message.equals(other.getMessage());
+            }
         }
-        return true;
     }
 
 }

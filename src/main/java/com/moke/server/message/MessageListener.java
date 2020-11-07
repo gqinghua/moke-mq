@@ -12,7 +12,7 @@ public abstract class MessageListener {
     /**
      * 当收到来自producer的消息时触发的事件,处理完成后需要返回一个ACK确认信息
      */
-    void onProducerMessageReceived(Message msg, String requestId, Channel channel) {
+    public void onProducerMessageReceived(Message msg, String requestId, Channel channel) {
     }
 
     /**
@@ -20,7 +20,7 @@ public abstract class MessageListener {
      *
      * @param msg
      */
-    void onConsumerResultReceived(ConsumeResult msg) {
+    public void onConsumerResultReceived(ConsumeResult msg) {
 
     }
 
@@ -30,7 +30,7 @@ public abstract class MessageListener {
      * @param msg
      * @param channel
      */
-    void onConsumerSubcriptReceived(SubscriptRequestinfo msg, ClientChannelInfo channel) {
+    public void onConsumerSubcriptReceived(SubscriptRequestinfo msg, ClientChannelInfo channel) {
 
     }
 
@@ -39,7 +39,7 @@ public abstract class MessageListener {
      *
      * @param request
      */
-    void onRequest(MokeRequest request) {
+    public void onRequest(MokeRequest request) {
 
     }
 
@@ -48,7 +48,7 @@ public abstract class MessageListener {
      *
      * @param
      */
-    void onError(Throwable throwable) {
+    public void onError(Throwable throwable) {
 
     }
 }
