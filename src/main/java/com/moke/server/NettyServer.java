@@ -22,17 +22,46 @@ import java.util.Objects;
  * @author jianglinzou
  * @date 2019/3/11 下午4:10
  */
-public class NettyServer {
+public class NettyServer implements  BrokerServer{
 
     private EventLoopGroup bossGroup;
     private EventLoopGroup workerGroup;
 
     public static Logger logger = LoggerFactory.getLogger(NettyServer.class);
 
-    public NettyServer() {
+
+
+    @Override
+    public void init() {
+        final BrokerHandler handler = new BrokerHandler();
+
+        //设置两个监听器
+        handler.setProducerListener(new ProducerMessageListener());
+        handler.setConsumerRequestListener(new ConsumerMessageListener());
+
+        EventLoopGroup bossGroup = new NioEventLoopGroup();
+        //处理事件的线程池
+        EventLoopGroup workerGroup = new NioEventLoopGroup(30);
+        try {
+            bootstrap = new ServerBootstrap();
+            bootstrap.group(bossGroup,workerGroup).channel(NioServerSocketChannel.class)
+                    .handler(new LoggingHandler(LogLevel.INFO))
+                    .childHandler(new ChannelInitializer<SocketChannel>() {
+
+                        @Override
+                        protected void initChannel(SocketChannel socketChannel) throws Exception {
+                            socketChannel.pipeline().addLast(new RpcEncoder(StormResponse.class));
+                            socketChannel.pipeline().addLast(new RpcDecoder(StormRequest.class));
+                            socketChannel.pipeline().addLast(handler);
+                        }
+                    }).option(ChannelOption.SO_KEEPALIVE,true);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
-    public void bind(int port) throws Exception {
+    @Override
+    public void start(int port) throws Exception {
         // 配置NIO线程组
         bossGroup = new NioEventLoopGroup();
         workerGroup = new NioEventLoopGroup();

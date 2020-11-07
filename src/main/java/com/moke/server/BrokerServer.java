@@ -14,5 +14,5 @@ public interface BrokerServer {
     /**
      * 启动接口
      */
-    void start();
+    void  start(int port) throws Exception;
 }
