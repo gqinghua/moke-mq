@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="soomq-client" />
+        <module name="mokemq-server" />
+        <module name="mokemq-common" />
+        <module name="soomq-common" />
+        <module name="soomq-server" />
+        <module name="mokemq-client" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="moke-mq" target="1.5" />
+      <module name="mokemq-client" target="8" />
+      <module name="mokemq-common" target="7" />
+      <module name="mokemq-server" target="7" />
+      <module name="soomq-client" target="8" />
+      <module name="soomq-common" target="7" />
+      <module name="soomq-server" target="7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

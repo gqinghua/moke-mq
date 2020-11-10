@@ -1,0 +1,25 @@
+package com.xs.test.producer;
+
+import com.moke.mq.client.consumer.Consumer;
+import com.moke.mq.client.server.ServerMap;
+import com.moke.mq.common.Message;
+
+public class ConsumerTest {
+
+    private static String ip="127.0.0.1";
+    private static Integer port=9870;
+    public static String topic="tp_test1";
+
+    public static void main(String[] args) {
+
+        ServerMap.addTopicServer(ip,port,topic);
+        Message msg = new Message();
+        msg.setTopic("tp_test1");
+        ServerMap.addTopicServer(ip,port,msg.getTopic());
+        msg.setOffset(0);
+        for(int i=0;i<1;i++){
+            Consumer.readMsg(msg);
+        }
+
+    }
+}
