@@ -55,8 +55,8 @@ public class ConnectionManager {
                     ch.pipeline().addLast(new ObjectEncoder());
                     ch.pipeline().addLast(new ObjectDecoder(Integer.MAX_VALUE,
                             ClassResolvers.cacheDisabled(null)));
-                    ch.pipeline().addLast(new SooMqClientOutHandler());
-                    ch.pipeline().addLast(new SooMqClientHandler());
+                    ch.pipeline().addLast(new MokeMqClientOutHandler());
+                    ch.pipeline().addLast(new MokeMqClientHandler());
                 }
             });
             ChannelFuture f = b.connect();

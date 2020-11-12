@@ -11,7 +11,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
  * create by 尼恩 @ 疯狂创客圈
  **/
 @ChannelHandler.Sharable
-public class SooMqClientHandler extends ChannelInboundHandlerAdapter {
+public class MokeMqClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {

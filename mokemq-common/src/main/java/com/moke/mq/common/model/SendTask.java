@@ -1,6 +1,8 @@
 package com.moke.mq.common.model;
 
-import broker.netty.smq.Message;
+
+
+import com.moke.mq.common.Message;
 
 import java.io.Serializable;
 

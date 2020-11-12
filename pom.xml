@@ -12,7 +12,6 @@
         <module>mokemq-server</module>
         <module>mokemq-common</module>
         <module>mokemq-client</module>
-        <module>mokemq-client</module>
         <module>mokemq-broker</module>
 
         <!--        <module>soomq-config</module>-->

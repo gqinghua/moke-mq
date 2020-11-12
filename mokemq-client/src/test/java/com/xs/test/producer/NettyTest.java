@@ -1,6 +1,6 @@
 package com.xs.test.producer;
 
-import com.moke.mq.client.connection.SooMqClientHandler;
+import com.moke.mq.client.connection.MokeMqClientHandler;
 import com.moke.mq.common.Message;
 import com.moke.mq.common.ProcessorCommand;
 import com.moke.mq.common.ProcessorType;
@@ -42,7 +42,7 @@ public class NettyTest {
                     ch.pipeline().addLast(new ObjectEncoder());
                     ch.pipeline().addLast(new ObjectDecoder(Integer.MAX_VALUE,
                             ClassResolvers.cacheDisabled(null)));
-                    ch.pipeline().addLast(new SooMqClientHandler());
+                    ch.pipeline().addLast(new MokeMqClientHandler());
                 }
             });
             ChannelFuture f = b.connect();
